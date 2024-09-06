@@ -1,0 +1,146 @@
+// Color
+$blue: #0086e4;
+$error: #ed4337;
+
+$primary-color: $blue;
+$border-color: #dddddd;
+$label-color: #aaa;
+
+// Input
+$input-height: 40px;
+
+// Button
+$button-height: $input-height;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    circle at 24.1% 68.8%,
+    rgb(50, 50, 50) 0%,
+    rgb(0, 0, 0) 99.4%
+  );
+}
+
+.auth {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
+  background-color: white;
+  border-radius: 6px;
+
+  .auth-info {
+    .user-info {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+
+      .username {
+        font-size: 18px;
+      }
+
+      button {
+        padding: 0 15px;
+        cursor: pointer;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 6px;
+        letter-spacing: 1px;
+        height: $button-height;
+        transition: 300ms background-color ease-in-out;
+        &:hover {
+          background-color: lighten($primary-color, 10%);
+        }
+      }
+    }
+
+    .error {
+      font-size: 18px;
+      color: $error;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .input-block {
+      position: relative;
+      display: flex;
+      justify-content: stretch;
+
+      label {
+        display: block;
+        position: absolute;
+        top: 0;
+        line-height: $input-height;
+        color: $label-color;
+        left: 5px;
+        padding: 0 5px;
+        transition: line-height 200ms ease-in-out, font-size 200ms ease-in-out,
+          top 200ms ease-in-out;
+        pointer-events: none;
+      }
+      input {
+        height: $input-height;
+        border: 1px solid $border-color;
+        border-radius: 3px;
+        padding: 0 10px;
+        width: 100%;
+        &:not(:placeholder-shown),
+        &:focus {
+          + label {
+            background-color: white;
+            line-height: 10px;
+            opacity: 1;
+            font-size: 10px;
+            top: -5px;
+          }
+        }
+        &:focus {
+          outline: none;
+          border: 1px solid $primary-color;
+          + label {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+
+    button {
+      padding: 0 15px;
+      cursor: pointer;
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 6px;
+      letter-spacing: 1px;
+      width: 100%;
+      height: $button-height;
+      transition: 300ms background-color ease-in-out;
+      &:hover {
+        background-color: lighten($primary-color, 10%);
+      }
+    }
+  }
+}
